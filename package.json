@@ -1,0 +1,19 @@
+{
+  "name": "pocket",
+  "version": "1.0.0",
+  "description": "A Budgeting Application",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/niloyKGhosh/pocket.git"
+  },
+  "author": "Raed Idris Seraj, Niloy Kumar Ghosh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/niloyKGhosh/pocket/issues"
+  },
+  "homepage": "https://github.com/niloyKGhosh/pocket#readme"
+}
