@@ -1,1 +1,1 @@
-# pocket
+# pocket - A Budgeting Application
