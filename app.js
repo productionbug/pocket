@@ -1,7 +1,18 @@
 const express = require("express");
+const bodyParser = require("body-parser");
+const morgan = require("morgan");
+
+const port = process.env.PORT || 3000;
 
 const app = express();
 
-app.listen(3000, () => {
-	console.log(`Server is running at port: ${3000}`);
+app.use(morgan("tiny"));
+app.use(bodyParser.json());
+
+app.get("/", (req, res, next) => {
+  res.send("Welcome to pocket");
+});
+
+app.listen(port, () => {
+  console.log(`Server is running at port: ${port}`);
 });
