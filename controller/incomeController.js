@@ -7,11 +7,14 @@ const getSingleIncome = (req, res, next) => {
 };
 
 const postIncome = (req, res, next) => {
-	res.json({ message: "Inside post income route" });
+	res.json({ message: "Inside post income route", posted: req.body.income });
 };
 
 const updateIncome = (req, res, next) => {
-	res.json({ message: "Inside update income route" });
+	res.json({
+		message: "Inside update income route",
+		updated: req.body.incomeUpdate,
+	});
 };
 
 const deleteAllIncomes = (req, res, next) => {
