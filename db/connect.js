@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const connect = () =>
 	mongoose.connect(
-		"mongodb://localhost:27017",
+		"mongodb://localhost:27017/pocket",
 		{
 			useNewUrlParser: true,
 			useUnifiedTopology: true,
