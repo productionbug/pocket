@@ -2,6 +2,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 
+const connect = require("./db/connect");
+
 const app = express();
 
 // Getting all routers
@@ -19,6 +21,12 @@ app.use(expenseRouter);
 
 const port = process.env.PORT || 3000;
 
-app.listen(port, () => {
-	console.log(`Server is running at port: ${port}`);
-});
+connect()
+	.then((connection) => {
+		app.listen(port, () => {
+			console.log(`Server is running at port: ${port}`);
+		});
+	})
+	.catch((e) => {
+		console.error(e);
+	});
