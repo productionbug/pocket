@@ -1,12 +1,12 @@
 const express = require("express");
 
 const {
-  getAllExpenses,
-  getSingleExpense,
-  postExpense,
-  updateExpense,
-  deleteAllExpenses,
-  deleteSingleExpense,
+	getAllExpenses,
+	getSingleExpense,
+	postExpense,
+	updateExpense,
+	deleteAllExpenses,
+	deleteSingleExpense,
 } = require("../controller/expenseController");
 
 const router = express.Router();
@@ -19,7 +19,7 @@ router.get("/expenses", getAllExpenses);
 /**
  * GET REQUEST FOR FETCHING AN INDIVIDUAL EXPENSE
  */
-router.get("/expense:id", getSingleExpense);
+router.get("/expense/:id", getSingleExpense);
 
 /**
  * POST REQUEST FOR POSTING AN INDIVIDUAL EXPENSE
@@ -31,7 +31,7 @@ router.post("/expense", postExpense);
  * PUT REQUEST FOR UPDATING AN INDIVIDUAL EXPENSE INFORMATION
  */
 
-router.put("/expense:id", updateExpense);
+router.put("/expense/:id", updateExpense);
 
 /**
  * DELETE REQUEST FOR DELETING ALL EXPENSES
@@ -42,4 +42,6 @@ router.delete("/expenses", deleteAllExpenses);
  * DELETE REQUEST FOR DELETING AN INDIVIDUAL EXPENSE
  */
 
-router.delete("/expense:id", deleteSingleExpense);
+router.delete("/expense/:id", deleteSingleExpense);
+
+module.exports = router;
