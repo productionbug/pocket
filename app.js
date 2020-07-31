@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 
 const connect = require("./db/connect");
+const controller404 = require("./controller/404.controller");
 
 const app = express();
 
@@ -19,14 +20,16 @@ app.use(indexRouter);
 app.use(incomesRouter);
 app.use(expenseRouter);
 
+app.use(controller404);
+
 const port = process.env.PORT || 3000;
 
 connect()
-	.then((connection) => {
-		app.listen(port, () => {
-			console.log(`Server is running at port: ${port}`);
-		});
-	})
-	.catch((e) => {
-		console.error(e);
-	});
+  .then((connection) => {
+    app.listen(port, () => {
+      console.log(`Server is running at port: ${port}`);
+    });
+  })
+  .catch((e) => {
+    console.error(e);
+  });
