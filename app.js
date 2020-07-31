@@ -24,12 +24,12 @@ app.use(controller404);
 
 const port = process.env.PORT || 3000;
 
-connect()
-  .then((connection) => {
-    app.listen(port, () => {
-      console.log(`Server is running at port: ${port}`);
-    });
-  })
-  .catch((e) => {
-    console.error(e);
-  });
+connect("mongodb://localhost:27017/pocket")
+	.then((connection) => {
+		app.listen(port, () => {
+			console.log(`Server is running at port: ${port}`);
+		});
+	})
+	.catch((e) => {
+		console.error(e);
+	});
