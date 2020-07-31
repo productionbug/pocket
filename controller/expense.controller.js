@@ -24,15 +24,15 @@ const getSingleExpense = async (req, res, next) => {
 };
 
 const postExpense = async (req, res, next) => {
-	const nanoid = customAlphabet(
-		"1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQESTUVWXYZ"
-	);
-
-	const { title, amount } = req.body.expense;
-	const expenseId = nanoid();
-	const dateCreated = "Today";
-
 	try {
+		const nanoid = customAlphabet(
+			"1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQESTUVWXYZ",
+			21
+		);
+		const title = req.body.title;
+		const amount = req.body.amount;
+		const expenseId = nanoid();
+		const dateCreated = "Today";
 		const expense = await Expense.create({
 			title,
 			amount,
