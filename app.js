@@ -7,9 +7,9 @@ const connect = require("./db/connect");
 const app = express();
 
 // Getting all routers
-const indexRouter = require("./routes/index");
-const incomesRouter = require("./routes/incomes");
-const expenseRouter = require("./routes/expenses");
+const indexRouter = require("./routes/index.route");
+const incomesRouter = require("./routes/incomes.route");
+const expenseRouter = require("./routes/expenses.route");
 
 app.use(morgan("tiny"));
 app.use(bodyParser.urlencoded({ extended: false }));

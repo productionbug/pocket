@@ -7,7 +7,7 @@ const {
 	updateExpense,
 	deleteAllExpenses,
 	deleteSingleExpense,
-} = require("../controller/expenseController");
+} = require("../controller/expense.controller");
 
 const router = express.Router();
 
