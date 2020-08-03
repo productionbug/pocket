@@ -16,6 +16,9 @@ const getSingleExpense = async (req, res, next) => {
   const id = req.params.id;
   try {
     const expense = await Expense.findOne({ expenseId: id }).lean().exec();
+    if (expense === NULL) {
+      return next();
+    }
     res.send({ message: "inside single expenses", expense });
   } catch (e) {
     next(e);
