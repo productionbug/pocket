@@ -8,7 +8,7 @@ const getAllIncomes = async (req, res, next) => {
     const incomes = await fetchAllIncomes();
     res.send({ message: "Inside all incomes route", incomes });
   } catch (e) {
-    console.log(e);
+    next(e);
   }
 };
 
@@ -18,7 +18,7 @@ const getSingleIncome = async (req, res, next) => {
     const income = await Income.findOne({ incomeId: id }).lean().exec();
     res.json({ message: "Inside single income route", income });
   } catch (e) {
-    console.log(e);
+    next(e);
   }
 };
 
@@ -43,7 +43,7 @@ const postIncome = async (req, res, next) => {
       posted: income.toObject(),
     });
   } catch (e) {
-    console.log(e);
+    next(e);
   }
 };
 

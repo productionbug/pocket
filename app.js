@@ -4,7 +4,7 @@ const morgan = require("morgan");
 
 const connect = require("./db/connect");
 const controller404 = require("./controller/404.controller");
-
+const errorHandler = require("./controller/error.controller");
 const app = express();
 
 // Getting all routers
@@ -21,15 +21,16 @@ app.use(incomesRouter);
 app.use(expenseRouter);
 
 app.use(controller404);
+app.use(errorHandler);
 
 const port = process.env.PORT || 3000;
 
 connect("mongodb://localhost:27017/pocket")
-	.then((connection) => {
-		app.listen(port, () => {
-			console.log(`Server is running at port: ${port}`);
-		});
-	})
-	.catch((e) => {
-		console.error(e);
-	});
+  .then((connection) => {
+    app.listen(port, () => {
+      console.log(`Server is running at port: ${port}`);
+    });
+  })
+  .catch((e) => {
+    console.error(e);
+  });
