@@ -33,6 +33,9 @@ const postExpense = async (req, res, next) => {
     );
     const title = req.body.title;
     const amount = req.body.amount;
+    if (!title || !amount) {
+      throw new Error("Title and Amount is required!");
+    }
     const expenseId = nanoid();
     const dateCreated = "Today";
     const expense = await Expense.create({
