@@ -1,4 +1,5 @@
 const { customAlphabet } = require("nanoid");
+const moment = require("moment");
 
 const Income = require("../models/income.model");
 const { fetchAllIncomes } = require("../utils/income-expense.utils");
@@ -16,6 +17,9 @@ const getSingleIncome = async (req, res, next) => {
   const id = req.params.id;
   try {
     const income = await Income.findOne({ incomeId: id }).lean().exec();
+    if (income === null) {
+      return next();
+    }
     res.json({ message: "Inside single income route", income });
   } catch (e) {
     next(e);
@@ -30,8 +34,13 @@ const postIncome = async (req, res, next) => {
     );
     const title = req.body.title;
     const amount = req.body.amount;
+
+    if (!title || !amount) {
+      throw new Error("Title and Amount is required!");
+    }
+
     const incomeId = nanoid();
-    const dateCreated = "Today";
+    const dateCreated = moment().format("dddd[,] Do MMM YYYY");
     const income = await Income.create({
       title,
       amount,
