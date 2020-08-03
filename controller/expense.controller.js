@@ -79,10 +79,10 @@ module.exports = {
 	deleteAllExpenses,
 	deleteSingleExpense,
 };
-
-// TODO: install nanoid
-// TODO: use nanoid to generate unique ids
+// TODO: finish income
 // TODO: use moment to generate date in post expense
 // TODO: validate the title and amount
 // TODO: use findOneandUpdate to update the expense
-// TODO: check if expense is there in the db. If null send to 404 in getSingleExpense
+// TODO: delete single Expense
+// TODO: update all Expense
+// TODO: Make virtual fetch Total Income and Total Expense
