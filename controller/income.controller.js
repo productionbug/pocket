@@ -77,21 +77,41 @@ const updateIncome = async (req, res, next) => {
       .exec();
 
     if (income === null) {
-      throw new Error("Entry does not exist");
+      // throw new Error("Entry does not exist");
+      return next();
     }
 
-    res.send({ income });
+    res.status(204).send({ income });
   } catch (e) {
     return next(e);
   }
 };
 
-const deleteAllIncomes = (req, res, next) => {
-  res.json({ message: "Inside delete all incomes route" });
+const deleteAllIncomes = async (req, res, next) => {
+  try {
+    const income = await Income.deleteMany({});
+    if (income === null) {
+      // throw new Error("Entry does not exist");
+      return next();
+    }
+    res.status(200).send({ income });
+  } catch (e) {
+    return next(e);
+  }
 };
 
-const deleteSingleIncome = (req, res, next) => {
-  res.json({ message: "Inside delete single income route" });
+const deleteSingleIncome = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const income = await Income.deleteOne({ incomeId: id });
+    if (income === null) {
+      // throw new Error("Entry does not exist");
+      return next();
+    }
+    res.status(200).send({ income });
+  } catch (e) {
+    return next(e);
+  }
 };
 
 module.exports = {
