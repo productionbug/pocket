@@ -56,11 +56,34 @@ const postIncome = async (req, res, next) => {
   }
 };
 
-const updateIncome = (req, res, next) => {
-  res.json({
-    message: "Inside update income route",
-    updated: req.body.incomeUpdate,
-  });
+const updateIncome = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+
+    let update = {};
+
+    if (req.body.title) {
+      update.title = req.body.title.trim();
+    }
+    if (req.body.amount) {
+      update.amount = req.body.amount;
+    }
+
+    const income = await Income.findOneAndUpdate({ incomeId: id }, update, {
+      new: true,
+      runValidators: true,
+    })
+      .lean()
+      .exec();
+
+    if (income === null) {
+      throw new Error("Entry does not exist");
+    }
+
+    res.send({ income });
+  } catch (e) {
+    return next(e);
+  }
 };
 
 const deleteAllIncomes = (req, res, next) => {
