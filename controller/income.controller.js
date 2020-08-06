@@ -63,6 +63,14 @@ const updateIncome = async (req, res, next) => {
 	try {
 		const id = req.params.id;
 
+		const income = await Income.findOne({ incomeId: id }).exec();
+
+		console.log(id, income);
+		if (income === null) {
+			// throw new Error("Entry does not exist");
+			return next();
+		}
+
 		let update = {};
 
 		if (req.body.title) {
@@ -71,19 +79,14 @@ const updateIncome = async (req, res, next) => {
 		if (req.body.amount) {
 			update.amount = req.body.amount;
 		}
+		/** Fix income logic here*/
+		// const updatedIncome = await Income.updateOne({ incomeId: id }, update, {
+		// 	new: true,
+		// 	runValidators: true,
+		// });
 
-		const income = await Income.findOneAndUpdate({ incomeId: id }, update, {
-			new: true,
-			runValidators: true,
-		})
-			.lean()
-			.exec();
+		// console.log(updatedIncome);
 
-		if (income === null) {
-			// throw new Error("Entry does not exist");
-			return next();
-		}
-		console.log(income);
 		res.send(income);
 	} catch (e) {
 		return next(e);
