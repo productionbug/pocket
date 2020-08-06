@@ -65,30 +65,24 @@ const updateIncome = async (req, res, next) => {
 
 		const income = await Income.findOne({ incomeId: id }).exec();
 
-		console.log(id, income);
 		if (income === null) {
 			// throw new Error("Entry does not exist");
 			return next();
 		}
 
-		let update = {};
-
 		if (req.body.title) {
-			update.title = req.body.title.trim();
+			income.title = req.body.title.trim();
 		}
 		if (req.body.amount) {
-			update.amount = req.body.amount;
+			income.amount = req.body.amount;
 		}
-		/** Fix income logic here*/
-		// const updatedIncome = await Income.updateOne({ incomeId: id }, update, {
-		// 	new: true,
-		// 	runValidators: true,
-		// });
 
-		// console.log(updatedIncome);
+		income.validateSync();
+		await income.save();
 
 		res.send(income);
 	} catch (e) {
+		// console.error(e);
 		return next(e);
 	}
 };
