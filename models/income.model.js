@@ -11,6 +11,12 @@ const incomeSchema = new Schema(
 		amount: {
 			type: Number,
 			required: true,
+			validate: {
+				validator: function (amount) {
+					return amount > 0;
+				},
+				message: `Amount must be greater than 0`,
+			},
 		},
 		dateCreated: {
 			type: String,
@@ -24,14 +30,6 @@ const incomeSchema = new Schema(
 	},
 	{ timestamps: true }
 );
-
-incomeSchema.pre("validate", function (next) {
-	if (this.amount < 0) {
-		console.log("Inside here");
-		return next(new Error("Amount cannot be less than 0"));
-	}
-	return next();
-});
 
 const Income = mongoose.model("income", incomeSchema);
 
