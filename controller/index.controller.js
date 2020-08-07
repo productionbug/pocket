@@ -1,15 +1,23 @@
 const {
-    totalExpense,
-    totalIncome,
+    currentBalance,
     fetchAllExpenses,
     fetchAllIncomes,
 } = require("../utils/income-expense.utils");
 
 module.exports.getIndex = async (req, res, next) => {
-    console.log("Total Expense = ", await totalExpense());
-    console.log("Total Income = ", await totalIncome());
+    try {
+        console.log("Total Income = ", await currentBalance().totalIncome);
+        console.log("Total Expense = ", await currentBalance().totalExpense);
+        console.log(
+            "Current Balance = ",
+            await currentBalance().currentBalance
+        );
+        res.json({ meessage: "inside the index controller" });
+    } catch (e) {
+        //!dont send the error to the controller
 
-    res.json({ meessage: "inside the index controller" });
+        console.log(e);
+    }
 };
 
 // TODO: fetch all expenses

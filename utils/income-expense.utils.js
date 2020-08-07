@@ -8,26 +8,31 @@ const fetchAllIncomes = function () {
     return Income.find({}).exec();
 };
 
-const totalIncome = async () => {
-    const allIncomes = await fetchAllIncomes();
-    let sum = 0;
-    for (let income of allIncomes) {
-        sum += income.amount;
+const currentBalance = async () => {
+    try {
+        const allExpenses = await fetchAllExpenses();
+        const allIncomes = await fetchAllIncomes();
+
+        const totalExpense = allExpenses.reduce((acc, expense) => {
+            return acc + expense.amount;
+        });
+
+        const totalIncome = allIncomes.reduce((acc, income) => {
+            return acc + income.amount;
+        });
+
+        return {
+            totalIncome,
+            totalExpense,
+            currentBalance: totalIncome - totalExpense,
+        };
+    } catch (e) {
+        throw new Error("Problem fetching current balance");
     }
-    return sum;
-};
-const totalExpense = async () => {
-    const allExpenses = await fetchAllExpenses();
-    let sum = 0;
-    for (let expense of allExpenses) {
-        sum += expense.amount;
-    }
-    return sum;
 };
 
 module.exports = {
-    totalExpense,
-    totalIncome,
+    currentBalance,
     fetchAllExpenses,
     fetchAllIncomes,
 };
