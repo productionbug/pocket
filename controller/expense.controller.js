@@ -64,31 +64,20 @@ const postExpense = async (req, res, next) => {
 const updateExpense = async (req, res, next) => {
     try {
         const id = req.params.id;
-
-        let update = {};
-
-        if (req.body.title) {
-            update.title = req.body.title.trim();
-        }
-        if (req.body.amount) {
-            update.amount = req.body.amount;
-        }
-
-        const expense = await Expense.findOneAndUpdate(
-            { expenseId: id },
-            update,
-            {
-                new: true,
-                runValidators: true,
-            }
-        )
-            .lean()
-            .exec();
+        const expense = await Expense.findOne({ expenseId: id }).exec();
 
         if (expense === null) {
-            //   throw new Error("Entry does not exist");
             return next();
         }
+
+        if (req.body.title) {
+            expense.title = req.body.title.trim();
+        }
+        if (req.body.amount) {
+            expense.amount = req.body.amount;
+        }
+        expense.validateSync();
+        await expense.save();
 
         res.send({
             expense,
