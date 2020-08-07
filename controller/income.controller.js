@@ -70,6 +70,7 @@ const updateIncome = async (req, res, next) => {
 			return next();
 		}
 
+		// ! what if we have multiple statements
 		if (req.body.title) {
 			income.title = req.body.title.trim();
 		}
