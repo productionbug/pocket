@@ -71,7 +71,7 @@ const updateExpense = async (req, res, next) => {
         }
 
         if (req.body.title) {
-            expense.title = req.body.title.trim();
+            expense.title = req.body.title.trim() || expense.title;
         }
         if (req.body.amount) {
             expense.amount = req.body.amount;
