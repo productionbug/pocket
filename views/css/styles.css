@@ -26,15 +26,18 @@ body {
 	color: #343a40;
 }
 .total-container__income {
-	background-color: #3eb489;
+	/* background-color: #3eb489; */
+	background-color: RGBA(62, 188, 137, 0.71);
 }
 
 .total-container__current {
-	background-color: #f4b840;
+	/* background-color: #f4b840; */
+	background-color: RGBA(244, 184, 64, 0.84);
 }
 
 .total-container__expense {
-	background-color: #e65a63;
+	/* background-color: #e65a63; */
+	background-color: RGBA(230, 90, 99, 0.86);
 }
 
 .balance {
@@ -62,6 +65,21 @@ select {
 .dollar-sign {
 	color: #16a085;
 	padding-right: 2.5px;
+}
+
+.footer-container {
+	min-height: 100vh;
+	position: relative;
+}
+.footer-wrapper {
+	padding-bottom: 100px;
+}
+.footer {
+	height: 100px;
+	width: 100%;
+
+	position: absolute;
+	bottom: 0;
 }
 /* font-family: 'Alegreya Sans', sans-serif;
 font-family: 'Poppins', sans-serif; */
