@@ -85,6 +85,22 @@ select {
 .footer-text p {
 	margin-bottom: 0;
 }
+
+#delete-btn {
+	color: #dc3545;
+}
+
+#delete-btn:hover {
+	color: #c5303f;
+}
+
+#edit-btn {
+	color: #28a745;
+}
+
+#edit-btn:hover {
+	color: #208a39;
+}
 /* font-family: 'Alegreya Sans', sans-serif;
 font-family: 'Poppins', sans-serif; */
 /* background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(90,92,106,1) 0%, rgba(32,45,58,1) 81.3% ); */
