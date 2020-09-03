@@ -2,24 +2,35 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+}
+
+body {
 	font-family: "Poppins", sans-serif;
 }
 
-.container--custom {
-	background-color: antiquewhite;
-
-	min-height: 100vh;
+.navbar-brand--custom,
+.nav-link--date {
+	font-weight: 500;
 }
 
-/* .div-container {
-	position: relative;
-} */
+.nav-link--date {
+	color: #fda744 !important;
+}
 
-/* .div-content {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-} */
+.total-container__income {
+	background-color: #0fb9b1;
+	height: 100px;
+}
+
+.total-container__current {
+	background-color: #fda744;
+	height: 100px;
+}
+
+.total-container__expense {
+	background-color: #fc5c65;
+	height: 100px;
+}
 /* font-family: 'Alegreya Sans', sans-serif;
 font-family: 'Poppins', sans-serif; */
+/* background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(90,92,106,1) 0%, rgba(32,45,58,1) 81.3% ); */
