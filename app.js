@@ -7,6 +7,10 @@ const controller404 = require("./controller/404.controller");
 const errorHandler = require("./controller/error.controller");
 const app = express();
 
+// Setup view engine
+app.set("view engine", "ejs");
+app.set("views", "views");
+
 // Getting all routers
 const indexRouter = require("./routes/index.route");
 const incomesRouter = require("./routes/incomes.route");
@@ -26,11 +30,11 @@ app.use(errorHandler);
 const port = process.env.PORT || 3000;
 
 connect("mongodb://localhost:27017/pocket")
-  .then((connection) => {
-    app.listen(port, () => {
-      console.log(`Server is running at port: ${port}`);
-    });
-  })
-  .catch((e) => {
-    console.error(e);
-  });
+	.then((connection) => {
+		app.listen(port, () => {
+			console.log(`Server is running at port: ${port}`);
+		});
+	})
+	.catch((e) => {
+		console.error(e);
+	});
