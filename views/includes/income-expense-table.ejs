@@ -42,10 +42,12 @@
 					</tr>
 				</thead>
 				<tbody>
+					<% if (allIncomes.length > 0) { %> <% for (let income of
+					allIncomes) { %>
 					<tr>
 						<th scope="row">1</th>
-						<td>Programming</td>
-						<td>2000</td>
+						<td><%=income.title%></td>
+						<td><%=income.amount%></td>
 						<td>
 							<div class="row">
 								<div class="col-2 offset-md-4">
@@ -61,25 +63,13 @@
 							</div>
 						</td>
 					</tr>
-					<tr>
-						<th scope="row">1</th>
-						<td>Web Design</td>
-						<td>20000</td>
-						<td>
-							<div class="row">
-								<div class="col-2 offset-md-4">
-									<a href="#" id="delete-btn"
-										><span class="far fa-trash-alt"></span
-									></a>
-								</div>
-								<div class="col-2">
-									<a href="#" id="edit-btn"
-										><span class="far fa-edit"></span
-									></a>
-								</div>
-							</div>
-						</td>
-					</tr>
+					<% } %> <% } else { %>
+					<th scope="row">-</th>
+					<td class="text-center">No Incomes Posted</td>
+					<td></td>
+					<td></td>
+
+					<% } %>
 				</tbody>
 			</table>
 		</div>
@@ -99,10 +89,12 @@
 					</tr>
 				</thead>
 				<tbody>
+					<% if (allExpenses.length > 0) { %> <% for (let expense of
+					allExpenses) { %>
 					<tr>
 						<th scope="row">1</th>
-						<td>Programming</td>
-						<td>2000</td>
+						<td><%=expense.title%></td>
+						<td><%=expense.amount%></td>
 						<td>
 							<div class="row">
 								<div class="col-2 offset-md-4">
@@ -118,6 +110,13 @@
 							</div>
 						</td>
 					</tr>
+					<% } %> <% } else { %>
+					<th scope="row">-</th>
+					<td class="text-center">No Expenses Posted</td>
+					<td></td>
+					<td></td>
+
+					<% } %>
 				</tbody>
 			</table>
 		</div>

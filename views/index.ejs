@@ -7,10 +7,15 @@
 				<%- include('./includes/navigation.ejs') %>
 				<div class="container">
 					<main class="pt-4">
-						<%- include('./includes/total.ejs', {totalExpense,
-						totalIncome, currentBalance}) %> <%-
+						<%- include('./includes/total.ejs', {totalExpense:
+						totalExpense, totalIncome: totalIncome, currentBalance:
+						currentBalance, allIncomes: allIncomes, allExpenses:
+						allExpenses}) %> <%-
 						include('./includes/add-transaction.ejs') %> <%-
-						include('./includes/income-expense-table.ejs') %>
+						include('./includes/income-expense-table.ejs',
+						{totalExpense: totalExpense, totalIncome: totalIncome,
+						currentBalance: currentBalance, allIncomes: allIncomes,
+						allExpenses: allExpenses}) %>
 					</main>
 				</div>
 			</div>
