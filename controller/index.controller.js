@@ -12,8 +12,7 @@ module.exports.getIndex = async (req, res, next) => {
 		// res.json({ message: "inside the index controller" });
 		res.render("../views/index.ejs");
 	} catch (e) {
-		//!dont send the error to the controller
-
+		// ! dont send the error to the controller
 		console.log(e);
 	}
 };
