@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
+const path = require("path");
 
 const connect = require("./db/connect");
 const controller404 = require("./controller/404.controller");
@@ -11,6 +12,7 @@ const app = express();
 app.set("view engine", "ejs");
 app.set("views", "views");
 
+app.use(express.static(path.join(__dirname, "public")));
 // Getting all routers
 const indexRouter = require("./routes/index.route");
 const incomesRouter = require("./routes/incomes.route");

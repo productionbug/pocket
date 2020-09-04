@@ -9,7 +9,8 @@ module.exports.getIndex = async (req, res, next) => {
 			`totalInc = ${totalIncome}, totalExp = ${totalExpense}, currBalance = ${currentBalance}`
 		);
 
-		res.json({ message: "inside the index controller" });
+		// res.json({ message: "inside the index controller" });
+		res.render("../views/index.ejs");
 	} catch (e) {
 		//!dont send the error to the controller
 
