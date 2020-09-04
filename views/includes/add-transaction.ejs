@@ -1,0 +1,35 @@
+<div class="add-transaction text-center py-2 my-3">
+	<form>
+		<div class="form-row justify-content-center">
+			<div class="inc-exp-select col-md-auto mb-2">
+				<select name="incexpselect" class="inc-exp-select">
+					<option name="inc" value="inc">inc</option>
+					<option name="exp" value="exp">exp</option>
+				</select>
+			</div>
+			<div class="col-4 col-md-auto">
+				<label class="sr-only" for="transactionName">Name</label>
+				<input
+					type="text"
+					class="form-control mb-2"
+					id="transactionName"
+					placeholder="Name"
+				/>
+			</div>
+			<div class="col-4 col-md-auto">
+				<label class="sr-only" for="transactionAmount">Amount</label>
+				<input
+					type="text"
+					class="form-control mb-2"
+					id="transactionAmount"
+					placeholder="Amount"
+				/>
+			</div>
+			<div class="col-2 col-md-auto">
+				<button type="submit" class="btn btn-dark mb-2">
+					<span class="fas fa-arrow-right"></span>
+				</button>
+			</div>
+		</div>
+	</form>
+</div>
