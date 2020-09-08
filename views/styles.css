@@ -48,3 +48,22 @@ select {
 	padding: 5.5px 10px;
 	border-radius: 6px;
 }
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+	color: #fff;
+	background-color: #343a40;
+	border-color: transparent;
+}
+
+.nav-income,
+.nav-expense {
+	color: #000;
+	font-family: "Alegreya Sans", sans-serif;
+	font-weight: 500;
+}
+
+.dollar-sign {
+	color: #16a085;
+	padding-right: 2.5px;
+}
