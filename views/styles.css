@@ -1,0 +1,50 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: "Poppins", sans-serif;
+}
+
+.navbar-brand--custom,
+.nav-link--date {
+	font-weight: 500;
+}
+
+#nav-link--date {
+	color: #fda744;
+}
+
+.total-container__current,
+.total-container__income,
+.total-container__expense {
+	min-height: 100px;
+	border-radius: 10px;
+	padding: 10px;
+	color: #343a40;
+}
+
+.total-container__current {
+	/* background-color: #3eb489; */
+	background-color: RGBA(244, 184, 64, 0.84);
+}
+
+.total-container__income {
+	background-color: RGBA(62, 188, 137, 0.71);
+}
+
+.total-container__expense {
+	background-color: RGBA(230, 90, 99, 0.86);
+}
+
+.balance {
+	font-weight: 500;
+	font-size: 25px;
+}
+
+select {
+	padding: 5.5px 10px;
+	border-radius: 6px;
+}
