@@ -59,6 +59,7 @@ const postIncome = async (req, res, next) => {
 };
 
 const updateIncome = async (req, res, next) => {
+	console.log(req.body);
 	try {
 		const id = req.params.id;
 
@@ -74,13 +75,13 @@ const updateIncome = async (req, res, next) => {
 			income.title = req.body.title.trim() || income.title;
 		}
 		if (req.body.amount) {
-			income.amount = req.body.amount;
+			income.amount = parseInt(req.body.amount);
 		}
 
 		income.validateSync();
 		await income.save();
 
-		res.send(income);
+		res.redirect("/");
 	} catch (e) {
 		// console.error(e);
 		return next(e);

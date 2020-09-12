@@ -79,7 +79,7 @@ const updateExpense = async (req, res, next) => {
 		}
 		expense.validateSync();
 		await expense.save();
-		console.log("Redirecting");
+
 		res.status(201).redirect("/");
 	} catch (e) {
 		console.log(error);
@@ -94,7 +94,7 @@ const deleteAllExpenses = async (req, res, next) => {
 			// throw new Error("Entry does not exist");
 			return next();
 		}
-		res.status(200).redirect("/");
+		res.redirect("/");
 	} catch (e) {
 		return next(e);
 	}
