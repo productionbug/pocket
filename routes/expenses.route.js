@@ -22,7 +22,7 @@ router.get("/expenses", getAllExpenses);
 router.get("/expense/:id", getSingleExpense);
 
 router.get("/edit-expense-page", (req, res, next) => {
-	console.log(req.query);
+	// console.log(req.query);
 	if (req.query) {
 		res.render("../views/edit-expense.ejs", {
 			productId: req.query.expenseId,
@@ -43,7 +43,7 @@ router.get("/edit-expense-page", (req, res, next) => {
  * PUT REQUEST FOR UPDATING AN INDIVIDUAL EXPENSE INFORMATION
  */
 
-router.put("/expense/:id", updateExpense);
+router.post("/expense/:id", updateExpense);
 
 /**
  * DELETE REQUEST FOR DELETING ALL EXPENSES

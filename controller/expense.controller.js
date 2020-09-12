@@ -61,8 +61,10 @@ const postExpense = async (req, res, next) => {
 };
 
 const updateExpense = async (req, res, next) => {
+	console.log(req.body);
 	try {
 		const id = req.params.id;
+
 		const expense = await Expense.findOne({ expenseId: id }).exec();
 
 		if (expense === null) {
@@ -73,15 +75,14 @@ const updateExpense = async (req, res, next) => {
 			expense.title = req.body.title.trim() || expense.title;
 		}
 		if (req.body.amount) {
-			expense.amount = req.body.amount;
+			expense.amount = parseInt(req.body.amount);
 		}
 		expense.validateSync();
 		await expense.save();
-
-		res.send({
-			expense,
-		});
+		console.log("Redirecting");
+		res.status(201).redirect("/");
 	} catch (e) {
+		console.log(error);
 		return next(e);
 	}
 };

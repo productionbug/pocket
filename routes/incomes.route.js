@@ -43,7 +43,7 @@ router.get("/edit-income-page", (req, res, next) => {
  * PUT REQUEST FOR UPDATING AN INDIVIDUAL INCOME INFORMATION
  */
 
-router.put("/income/:id", updateIncome);
+router.post("/income/:id", updateIncome);
 
 /**
  * DELETE REQUEST FOR DELETING ALL INCOMES
