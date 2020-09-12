@@ -66,9 +66,26 @@
 									</form>
 								</div>
 								<div class="col-2">
-									<a href="#" class="edit-btn"
-										><span class="far fa-edit"></span
-									></a>
+									<form action="/edit-income-page">
+										<input
+											type="hidden"
+											name="title"
+											value="<%=income.title%>"
+										/>
+										<input
+											type="hidden"
+											name="amount"
+											value="<%=income.amount%>"
+										/>
+										<input
+											type="hidden"
+											name="incomeId"
+											value="<%=income.incomeId%>"
+										/>
+										<button type="submit" class="edit-btn">
+											<span class="far fa-edit"></span>
+										</button>
+									</form>
 								</div>
 							</div>
 						</td>
@@ -103,12 +120,8 @@
 					expense of allExpenses) { %>
 					<tr>
 						<th scope="row"><%=i%></th>
-						<td class="expense-title-<%=expense.expenseId%>">
-							<%=expense.title%>
-						</td>
-						<td class="expense-amount-<%=expense.expenseId%>">
-							<%=expense.amount%>
-						</td>
+						<td><%=expense.title%></td>
+						<td><%=expense.amount%></td>
 						<td>
 							<div class="row">
 								<div class="col-2 offset-md-4">
@@ -127,10 +140,22 @@
 									</form>
 								</div>
 								<div class="col-2">
-									<form
-										onclick="getEditPage(event, this.id)"
-										id="<%=expense.expenseId%>"
-									>
+									<form action="/edit-expense-page">
+										<input
+											type="hidden"
+											name="title"
+											value="<%=expense.title%>"
+										/>
+										<input
+											type="hidden"
+											name="amount"
+											value="<%=expense.amount%>"
+										/>
+										<input
+											type="hidden"
+											name="expenseId"
+											value="<%=expense.expenseId%>"
+										/>
 										<button type="submit" class="edit-btn">
 											<span class="far fa-edit"></span>
 										</button>

@@ -21,6 +21,18 @@ router.get("/incomes", getAllIncomes);
  */
 router.get("/income/:id", getSingleIncome);
 
+router.get("/edit-income-page", (req, res, next) => {
+	console.log(req.query);
+	if (req.query) {
+		res.render("../views/edit-income.ejs", {
+			productId: req.query.incomeId,
+			title: req.query.title,
+			amount: req.query.amount,
+		});
+	} else {
+		next();
+	}
+});
 /**
  * POST REQUEST FOR POSTING AN INDIVIDUAL INCOME
  */
