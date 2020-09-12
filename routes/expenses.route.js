@@ -26,6 +26,8 @@ router.get("/edit-expense-page", (req, res, next) => {
 	if (req.query) {
 		res.render("../views/edit-expense.ejs", {
 			productId: req.query.expenseId,
+			title: req.query.title,
+			amount: req.query.amount,
 		});
 	} else {
 		next();
@@ -41,7 +43,7 @@ router.get("/edit-expense-page", (req, res, next) => {
  * PUT REQUEST FOR UPDATING AN INDIVIDUAL EXPENSE INFORMATION
  */
 
-router.post("/edit-expense/:id", updateExpense);
+router.put("/expense/:id", updateExpense);
 
 /**
  * DELETE REQUEST FOR DELETING ALL EXPENSES
@@ -52,6 +54,6 @@ router.delete("/expenses", deleteAllExpenses);
  * DELETE REQUEST FOR DELETING AN INDIVIDUAL EXPENSE
  */
 
-router.post("/expense/:id", deleteSingleExpense);
+router.delete("/expense/:id", deleteSingleExpense);
 
 module.exports = router;

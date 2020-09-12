@@ -11,7 +11,11 @@
 					<div class="text-center mb-4">
 						<h1>Edit your expense</h1>
 					</div>
-					<form action="/edit-expense/<%=productId%>" method="POST">
+					<form
+						id="<%=productId%>"
+						onclick="editExpense()"
+						class="edit-expense-form"
+					>
 						<div class="form-row justify-content-center">
 							<div class="col-4 col-md-auto">
 								<label class="sr-only" for="transactionNewName"
@@ -22,6 +26,7 @@
 									class="form-control mb-2"
 									id="transactionNewName"
 									placeholder="Enter new Name"
+									name="newName"
 								/>
 							</div>
 							<div class="col-4 col-md-auto">
@@ -35,6 +40,7 @@
 									class="form-control mb-2"
 									id="transactionNewAmount"
 									placeholder="Enter new Amount"
+									name="newAmount"
 								/>
 							</div>
 							<div class="col-2 col-md-auto">
@@ -45,7 +51,7 @@
 						</div>
 					</form>
 
-					<form action="#">
+					<form action="/">
 						<div class="text-center mt-2">
 							<button type="button" class="btn btn-danger btn-lg">
 								Cancel

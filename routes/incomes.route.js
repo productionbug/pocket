@@ -42,6 +42,6 @@ router.delete("/incomes", deleteAllIncomes);
  * DELETE REQUEST FOR DELETING AN INDIVIDUAL INCOME
  */
 
-router.post("/income/:id", deleteSingleIncome);
+router.delete("/income/:id", deleteSingleIncome);
 
 module.exports = router;
