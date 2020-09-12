@@ -25,7 +25,7 @@ router.get("/income/:id", getSingleIncome);
  * POST REQUEST FOR POSTING AN INDIVIDUAL INCOME
  */
 
-router.post("/income", postIncome);
+// router.post("/income", postIncome);
 
 /**
  * PUT REQUEST FOR UPDATING AN INDIVIDUAL INCOME INFORMATION
@@ -42,6 +42,6 @@ router.delete("/incomes", deleteAllIncomes);
  * DELETE REQUEST FOR DELETING AN INDIVIDUAL INCOME
  */
 
-router.delete("/income/:id", deleteSingleIncome);
+router.post("/income/:id", deleteSingleIncome);
 
 module.exports = router;

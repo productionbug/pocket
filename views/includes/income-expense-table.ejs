@@ -42,28 +42,39 @@
 					</tr>
 				</thead>
 				<tbody>
-					<% if (allIncomes.length > 0) { %> <% for (let income of
-					allIncomes) { %>
+					<% if (allIncomes.length > 0) { %> <% let i = 1; for (let
+					income of allIncomes) { %>
 					<tr>
-						<th scope="row">1</th>
+						<th scope="row"><%=i%></th>
 						<td><%=income.title%></td>
 						<td><%=income.amount%></td>
 						<td>
 							<div class="row">
 								<div class="col-2 offset-md-4">
-									<a href="#" id="delete-btn"
-										><span class="far fa-trash-alt"></span
-									></a>
+									<form
+										action="/income/<%=income.incomeId%>"
+										method="POST"
+									>
+										<button
+											class="delete-btn"
+											type="submit"
+											id="<%=income.incomeId%>"
+										>
+											<span
+												class="far fa-trash-alt"
+											></span>
+										</button>
+									</form>
 								</div>
 								<div class="col-2">
-									<a href="#" id="edit-btn"
+									<a href="#" class="edit-btn"
 										><span class="far fa-edit"></span
 									></a>
 								</div>
 							</div>
 						</td>
 					</tr>
-					<% } %> <% } else { %>
+					<% i++; } %> <% } else { %>
 					<th scope="row">-</th>
 					<td class="text-center">No Incomes Posted</td>
 					<td></td>
@@ -89,28 +100,46 @@
 					</tr>
 				</thead>
 				<tbody>
-					<% if (allExpenses.length > 0) { %> <% for (let expense of
-					allExpenses) { %>
+					<% if (allExpenses.length > 0) { %> <% let i = 1; for (let
+					expense of allExpenses) { %>
 					<tr>
-						<th scope="row">1</th>
+						<th scope="row"><%=i%></th>
 						<td><%=expense.title%></td>
 						<td><%=expense.amount%></td>
 						<td>
 							<div class="row">
 								<div class="col-2 offset-md-4">
-									<a href="#" id="delete-btn"
-										><span class="far fa-trash-alt"></span
-									></a>
+									<form
+										action="/expense/<%=expense.expenseId%>"
+										method="POST"
+									>
+										<button
+											class="delete-btn"
+											type="submit"
+											id="<%=expense.expenseId%>"
+										>
+											<span
+												class="far fa-trash-alt"
+											></span>
+										</button>
+									</form>
 								</div>
 								<div class="col-2">
-									<a href="#" id="edit-btn"
-										><span class="far fa-edit"></span
-									></a>
+									<form action="/edit-expense-page">
+										<input
+											type="hidden"
+											name="expenseId"
+											value="<%=expense.expenseId%>"
+										/>
+										<button type="submit" class="edit-btn">
+											<span class="far fa-edit"></span>
+										</button>
+									</form>
 								</div>
 							</div>
 						</td>
 					</tr>
-					<% } %> <% } else { %>
+					<% i++; } %> <% } else { %>
 					<th scope="row">-</th>
 					<td class="text-center">No Expenses Posted</td>
 					<td></td>

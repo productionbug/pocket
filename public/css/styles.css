@@ -86,19 +86,24 @@ select {
 	margin-bottom: 0;
 }
 
-#delete-btn {
+.delete-btn,
+.edit-btn {
+	background-color: transparent;
+	border: none;
+}
+.delete-btn {
 	color: #dc3545;
 }
 
-#delete-btn:hover {
+.delete-btn:hover {
 	color: #c5303f;
 }
 
-#edit-btn {
+.edit-btn {
 	color: #28a745;
 }
 
-#edit-btn:hover {
+.edit-btn:hover {
 	color: #208a39;
 }
 /* font-family: 'Alegreya Sans', sans-serif;

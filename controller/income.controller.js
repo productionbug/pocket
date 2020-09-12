@@ -5,121 +5,121 @@ const Income = require("../models/income.model");
 const { fetchAllIncomes } = require("../utils/income-expense.utils");
 
 const getAllIncomes = async (req, res, next) => {
-    try {
-        const incomes = await fetchAllIncomes();
-        res.send({ message: "Inside all incomes route", incomes });
-    } catch (e) {
-        next(e);
-    }
+	try {
+		const incomes = await fetchAllIncomes();
+		res.send({ message: "Inside all incomes route", incomes });
+	} catch (e) {
+		next(e);
+	}
 };
 
 const getSingleIncome = async (req, res, next) => {
-    const id = req.params.id;
-    try {
-        const income = await Income.findOne({ incomeId: id }).lean().exec();
-        if (income === null) {
-            return next();
-        }
-        res.json({ message: "Inside single income route", income });
-    } catch (e) {
-        next(e);
-    }
+	const id = req.params.id;
+	try {
+		const income = await Income.findOne({ incomeId: id }).lean().exec();
+		if (income === null) {
+			return next();
+		}
+		res.json({ message: "Inside single income route", income });
+	} catch (e) {
+		next(e);
+	}
 };
 
 const postIncome = async (req, res, next) => {
-    try {
-        const nanoid = customAlphabet(
-            "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQESTUVWXYZ",
-            21
-        );
-        const title = req.body.title;
-        const amount = req.body.amount;
+	try {
+		const nanoid = customAlphabet(
+			"1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQESTUVWXYZ",
+			21
+		);
+		const title = req.body.title;
+		const amount = req.body.amount;
+		// console.log(title);
+		// console.log(amount);
+		if (amount <= 0) {
+			throw new Error("Amount must be greater than 0");
+		}
+		if (!title || !amount) {
+			throw new Error("Title and Amount is required!");
+		}
 
-        if (amount <= 0) {
-            throw new Error("Amount must be greater than 0");
-        }
-        if (!title || !amount) {
-            throw new Error("Title and Amount is required!");
-        }
+		const incomeId = nanoid();
+		const dateCreated = moment().format("dddd[,] Do MMM YYYY");
+		const income = await Income.create({
+			title,
+			amount,
+			dateCreated,
+			incomeId,
+		});
 
-        const incomeId = nanoid();
-        const dateCreated = moment().format("dddd[,] Do MMM YYYY");
-        const income = await Income.create({
-            title,
-            amount,
-            dateCreated,
-            incomeId,
-        });
-        res.status(201).send({
-            message: "Inside post income route",
-            posted: income.toObject(),
-        });
-    } catch (e) {
-        next(e);
-    }
+		res.status(201).redirect("/");
+	} catch (e) {
+		next(e);
+	}
 };
 
 const updateIncome = async (req, res, next) => {
-    try {
-        const id = req.params.id;
+	try {
+		const id = req.params.id;
 
-        const income = await Income.findOne({ incomeId: id }).exec();
+		const income = await Income.findOne({ incomeId: id }).exec();
 
-        if (income === null) {
-            // throw new Error("Entry does not exist");
-            return next();
-        }
+		if (income === null) {
+			// throw new Error("Entry does not exist");
+			return next();
+		}
 
-        // ! what if we have multiple statements
-        if (req.body.title) {
-            income.title = req.body.title.trim() || income.title;
-        }
-        if (req.body.amount) {
-            income.amount = req.body.amount;
-        }
+		// ! what if we have multiple statements
+		if (req.body.title) {
+			income.title = req.body.title.trim() || income.title;
+		}
+		if (req.body.amount) {
+			income.amount = req.body.amount;
+		}
 
-        income.validateSync();
-        await income.save();
+		income.validateSync();
+		await income.save();
 
-        res.send(income);
-    } catch (e) {
-        // console.error(e);
-        return next(e);
-    }
+		res.send(income);
+	} catch (e) {
+		// console.error(e);
+		return next(e);
+	}
 };
 
 const deleteAllIncomes = async (req, res, next) => {
-    try {
-        const income = await Income.deleteMany({});
-        if (income === null) {
-            // throw new Error("Entry does not exist");
-            return next();
-        }
-        res.status(200).send({ income });
-    } catch (e) {
-        return next(e);
-    }
+	try {
+		const income = await Income.deleteMany({});
+		if (income === null) {
+			// throw new Error("Entry does not exist");
+			return next();
+		}
+		res.status(200).redirect("/");
+	} catch (e) {
+		return next(e);
+	}
 };
 
 const deleteSingleIncome = async (req, res, next) => {
-    try {
-        const id = req.params.id;
-        const income = await Income.deleteOne({ incomeId: id });
-        if (income === null) {
-            // throw new Error("Entry does not exist");
-            return next();
-        }
-        res.status(200).send({ income });
-    } catch (e) {
-        return next(e);
-    }
+	try {
+		const id = req.params.id;
+		const income = await Income.deleteOne({ incomeId: id });
+		if (income === null) {
+			// throw new Error("Entry does not exist");
+			return next();
+		}
+		console.log("Redirecting in deleteSingleIncome");
+		res.status(200).redirect("/");
+	} catch (e) {
+		return next(e);
+	}
 };
 
 module.exports = {
-    getAllIncomes,
-    getSingleIncome,
-    postIncome,
-    updateIncome,
-    deleteAllIncomes,
-    deleteSingleIncome,
+	getAllIncomes,
+	getSingleIncome,
+	postIncome,
+	updateIncome,
+	deleteAllIncomes,
+	deleteSingleIncome,
 };
