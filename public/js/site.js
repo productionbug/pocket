@@ -1,3 +1,25 @@
+function createDate() {
+	const [month, date, year] = new Date().toLocaleDateString().split("/");
+	const monthNames = [
+		"Jan",
+		"Feb",
+		"Mar",
+		"Apr",
+		"May",
+		"Jun",
+		"Jul",
+		"Aug",
+		"Sep",
+		"Oct",
+		"Nov",
+		"Dec",
+	];
+
+	document.querySelector(
+		".nav-link--date"
+	).innerHTML = `${monthNames[month]} ${date} ${year}`;
+}
+
 function deleteIncome(e, id) {
 	const url = "/income/" + id;
 
@@ -17,3 +39,5 @@ function deleteExpense(e, id) {
 		return;
 	});
 }
+
+createDate();
