@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const path = require("path");
+require("dotenv").config();
 
 const connect = require("./db/connect");
 const controller404 = require("./controller/404.controller");
