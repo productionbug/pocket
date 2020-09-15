@@ -31,13 +31,14 @@ app.use(controller404);
 app.use(errorHandler);
 
 const port = process.env.PORT || 3000;
+const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017/pocket";
 
-connect("mongodb://localhost:27017/pocket")
-	.then((connection) => {
-		app.listen(port, () => {
-			console.log(`Server is running at port: ${port}`);
-		});
-	})
-	.catch((e) => {
-		console.error(e);
-	});
+connect(MONGO_URI)
+    .then((connection) => {
+        app.listen(port, () => {
+            console.log(`Server is running at port: ${port}`);
+        });
+    })
+    .catch((e) => {
+        console.error(e);
+    });
