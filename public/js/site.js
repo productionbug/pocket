@@ -15,9 +15,9 @@ function createDate() {
 		"Dec",
 	];
 
-	document.querySelector(
-		".nav-link--date"
-	).innerHTML = `${monthNames[month]} ${date} ${year}`;
+	document.querySelector(".nav-link--date").innerHTML = `${
+		monthNames[month - 1]
+	} ${date} ${year}`;
 }
 
 function deleteIncome(e, id) {
